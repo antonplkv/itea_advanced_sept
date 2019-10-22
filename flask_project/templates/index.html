@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>My page</title>
+    {% endif %}
+</head>
+
+    <body>
+        <center><h1>Hi i am header one</h1></center>
+        <center><p>I am paragraph</p></center>
+        <p>{{ data }}</p>
+
+
+
+        <div align="center">
+            <h1> Our users </h1>
+            {% for username, status in users.items()%}
+
+                <p>Username: {{ username }} Status: {{ status }}</p>
+            {% endfor %}
+
+            {% for i in template_list %}
+                <p><a href='/get-student-info/{{ i }}'>
+                Имя Студента
+                </a></p>
+            {% endfor %}
+        </div>
+
+
+
+
+    </body>
+
+
+</html>
