@@ -16,6 +16,11 @@ class Category(Document):
     title = StringField(max_length=255, required=True)
     description = StringField(max_length=512)
     subcategory = ListField(ReferenceField('self'))
+    is_root = BooleanField(default=False)
+
+    @classmethod
+    def get_root_categories(cls):
+        return cls.objects(is_root=True)
 
     @property
     def is_parent(self):
@@ -47,3 +52,5 @@ class Product(Document):
     @classmethod
     def get_discount_products(cls, **kwargs):
         return cls.objects(is_discount=True, **kwargs)
+
+
