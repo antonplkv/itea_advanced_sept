@@ -11,6 +11,12 @@ from keyboards import ReplyKB
 bot = telebot.TeleBot(config.TOKEN)
 app = Flask(__name__)
 
+
+# Empty webserver index, return nothing, just http 200
+@app.route('/', methods=['GET', 'HEAD'])
+def index():
+    return ''
+
 # Process webhook calls
 @app.route('/', methods=['POST'])
 def webhook():
